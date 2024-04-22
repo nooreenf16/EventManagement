@@ -1,0 +1,7 @@
+python -m pip install flask
+python -m pip install mysql-connector-python
+python -m pip install sqlalchemy
+mysqlclient
+flask-sqlalchemy
+flask-login
+pymysql

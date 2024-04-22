@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}View Report as Bar Chart{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 class="title_txt" align="center">Select Types of Report</h3>
+
+    <div class="form-group p-3">
+        <label for="startdate">Start Date</label>
+        <input class="form-control txtfield" type="date" id="startdate" name="startdate"
+        value="{{ request.form['startdate']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="types">Group By</label>
+        <select class="form-control txtfield txtfield_long" id="types" name="types">
+            <option style="color:gray;" value="" disabled selected>Select Faculty Appointment</option>
+            <option value="colleges">Colleges</option>
+            <option value="faculty_appoinments">Faculty Appoinments</option>
+        </select>
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-red">Renerate Bar Chart</button>
+</form>
+<a href="/"><button class="btn-red">Cancel</button></a>
+{% endblock %}

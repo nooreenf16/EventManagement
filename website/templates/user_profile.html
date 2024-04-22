@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block title %}User Profile{% endblock %}
+
+
+{% block content %}
+
+    <h3 class="title_txt" align="center">Current User Profile</h3>
+        <div align="center">
+        <a href="/update-user-profile"><button class="btn-red">Update User Profile</button></a>
+            &emsp;&emsp;&emsp;&emsp;
+        <a href="/update-user-password"><button class="btn-red">Update User Password</button></a>
+        </div>
+        <div class="row p-3">
+            <div class="form-group col-auto">
+                <label for="first name">First Name</label>
+                <h3>{{userInfo.first_name}}</h3>
+            </div>
+            <div class="form-group col-auto">
+                <label for="last name">Last Name</label>
+                <h3>{{userInfo.last_name}}</h3>
+            </div>
+        </div>
+        <div class="row align-items-center p-3">
+            <div class="form-group col-auto">
+                <label for="email">Email Address</label>
+                <h3>{{userInfo.email}}</h3>
+            </div>
+        </div>
+        <div class="form-group p-3">
+            <label for="phone">Phone Number</label>
+            <h3>{{userInfo.phone_number}}</h3>
+        </div>
+        <div class="form-group p-3">
+            <label for="college">college</label>
+            <h3>{{userInfo.college}}</h3>
+        </div>
+        <div class="form-group p-3">
+            <label for="department">Department</label>
+            <h3>{{userInfo.department}}</h3>
+        </div>
+        <div class="form-group p-3">
+            <label for="title">Title</label>
+            <h3>{{userInfo.title}}</h3>
+        </div>
+        <div class="form-group p-3">
+            <label for="faculty_appointment">Faculty Appointment</label>
+            <h3>{{userInfo.faculty_appointment}}</h3>
+        </div>
+        <br />
+    
+        <div class="form-group p-3">
+            <label for="username">Username</label>
+            <h3>{{username}}</h3>
+        </div>
+        <br />
+    
+{% endblock %}
+

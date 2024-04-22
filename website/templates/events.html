@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}Create Event{% endblock %}
+
+
+{% block content %}
+
+    <h3 class="title_txt" align="center">All Events</h3>
+    <div class="form-group p-3">
+    <table id="eventtable" align="center">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                    <th >{{header}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+  <tbody>
+    {% for row in events %}
+    <tr>
+        <td>{{row.title}}</td>
+        <td>{{row.location}}</td>
+        <td>{{row.start_date}}</td>
+        <td>{{row.end_date}}</td>
+        <td>{{row.frequency}}</td>
+        <td>{{row.type}}</td>
+        <td hidden="true">{{row.id}}</td>
+        {% if user.is_authenticated %}
+        <td><button id="register{{row.id}}" class="btn-red-small" value={{row.id}} onclick="registerForEvent(value, 'events');">Register</button></td>
+        {% endif %} 
+    </tr>
+    {% endfor %}
+  </tbody>
+    </table>
+    </div>
+     
+    
+{% endblock %}
+

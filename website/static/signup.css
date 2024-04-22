@@ -1,0 +1,13 @@
+.txtfield{
+    color: gray;
+    width: 420px;
+    height: 52px;
+    background: #d9d9d9;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.txtfield_long{
+    width: 500px;
+    height: 52px;
+}

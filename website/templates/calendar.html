@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block title %}Calendar{% endblock %}
+
+{% block content %}
+    <h1 class="title_txt" align="center">Calendar</h1>
+    <div class="ui" style:"width:500px; height:500px; color:black;">
+      
+      <br/>
+      <div align="center" class="ui" style="width:700px; height:600px; color:black;">
+        <div class="ui grid" style="width:700px; height:600px">
+          <div class="ui sixteen column">
+            <div id="calendar"></div>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
+<script>
+    
+
+    $(document).ready(function() {
+        var all_events_json = JSON.parse('{{ all_events | safe}}');
+        var all_len = parseInt(Object.keys(all_events_json).length);
+        console.log(all_len)
+        const date = new Date();
+        var today = date.getFullYear()+'-'+String(date.getMonth() + 1)+'-'+date.getDate()
+        events=[];
+        for(var i = 0; i < all_len; i++){
+            events.push({title:all_events_json[i].title, start:all_events_json[i].start, end:all_events_json[i].end, color:"#8F0505"})
+        }
+        console.log(today)
+        $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek,basicDay'
+          },
+          defaultDate: today,
+          navLinks: true, // can click day/week names to navigate views
+          editable: true,
+          eventLimit: true, 
+          color:"#8F0505",
+          events: events
+        });
+    });
+</script>
+{% endblock %}

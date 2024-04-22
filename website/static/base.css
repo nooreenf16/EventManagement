@@ -1,0 +1,86 @@
+.html{
+    font-family: Inter;
+    font-style: normal;
+}
+
+section {
+    min-height: 71vh;
+}
+
+.frow{
+    height: 20vh;
+}
+
+.navcolor{
+    background-color: #8F0505;
+    color: white;
+    align-items: end;
+}
+
+.title_txt{
+    margin: 20px;
+    padding: 10px;
+    border-bottom: 3px solid #a90303;
+    text-transform: uppercase;
+}
+
+.btn-red{
+    width: 250px;
+    height: 50px;
+    color: white;
+    background: #dd4646;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 6px 4px #f09494;
+}
+
+.btn-red:hover{
+    color: maroon;
+    background: #eecbcb;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 6px 4px #f09494;
+}
+
+.btn-red-small{
+    width: 150px;
+    height: 30px;
+    color: white;
+    background: #dd4646;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 6px 4px #f09494;
+}
+
+.btn-red-small:hover{
+    color: maroon;
+    background: #eecbcb;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 6px 4px #f09494;
+}
+
+input[type=checkbox] + label{ 
+    background-color: gray;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: white;
+}
+
+.regular-checkbox:checked {
+	background-color: red;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: #99a1a7;
+}
+
+.footer{
+    background: #8f0404;
+    color: white;
+    height: 20vh;
+    
+    font-family: Inika;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 31px;
+    text-align: center;
+    justify-content: center;
+    align-items: last baseline;
+    padding-bottom: 10px;
+}

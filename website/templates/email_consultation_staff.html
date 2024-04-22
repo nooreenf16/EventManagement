@@ -1,0 +1,11 @@
+
+{% block content %}
+<p>Hello ,</p>
+
+<p>Consultation Request recieved</p>
+
+<p>Requested From:{{consultation.staff_id}}</p>
+<p>Mode of Consultation: {{consultation.mode}}</p>
+<p>Reason: {{consultation.reasons}}</p>
+<p>Requested by:{{user.first_name}}</p>
+{% endblock %}

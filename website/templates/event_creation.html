@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% block title %}Create Event{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 class="title_txt" align="center">Create Event</h3>
+
+    <div class="form-group p-3">
+        <label for="event title">Event Title</label>
+        <input type="text" class="form-control txtfield txtfield_long" id="etitle" name="etitle" placeholder="Enter event title"
+        value="{{ request.form['etitle']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="event type">Event Type</label>
+        <select class="form-control txtfield txtfield_long" id="etype" name="etype">
+            <option style="color:gray;" value="" disabled selected>Select event type</option>
+            <option value="ACUE">ACUE</option>
+            <option value="Associate to Full">Associate to Full</option>
+            <option value="CAMP">CAMP</option>
+            <option value="CUT">CUT</option>
+            <option value="Faculty Fellow">aculty Fellow</option>
+            <option value="FTTC">FTTC</option>
+            <option value="Lunch and Learn Series">Lunch and Learn Series</option>
+            <option value="Part-time Faculty Orientation">Part-time Faculty Orientation</option>
+            <option value="Part-time Faculty Teaching Circle">Part-time Faculty Teaching Circle</option>
+            <option value="Resilient Course Design">Resilient Course Design</option>
+            <option value="Spring">Spring</option>
+            <option value="Teaching Effectiveness Taskforce">Teaching Effectiveness Taskforce</option>
+            <option value="Technology Demos">Technology Demos</option>
+        </select>
+    </div>
+    <div class="form-group p-3">
+        <label for="speaker">Speaker / Host</label>
+        <input type="text" class="form-control txtfield txtfield_long" id="speaker" name="speaker" placeholder="Enter speaker of the event"
+        value="{{ request.form['speaker']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="location">Location</label>
+        <input type="text" class="form-control txtfield txtfield_long" id="location" name="location" placeholder="Enter event's location"
+        value="{{ request.form['location']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="startdate">Start Date</label>
+        <input class="form-control txtfield" type="date" id="startdate" name="startdate"
+        value="{{ request.form['startdate']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="enddate">End Date</label>
+        <input class="form-control txtfield" type="date" id="enddate" name="enddate"
+        value="{{ request.form['enddate']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="event type">Event Frequency</label>
+        <select class="form-control txtfield txtfield_long" id="frequency" name="frequency">
+            <option style="color:gray;" value="" disabled selected>Select event frequency</option>
+            <option value="Once">Once</option>
+            <option value="Weekly">Weekly</option>
+            <option value="BiWeekly">BiWeekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Bimonthly">Bimonthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Half-yearly">Half-yearly</option>
+            <option value="Yearly">Yearly</option>
+        </select>
+    </div>
+    <div class="form-group p-3">
+        <label for="time">Time</label>
+        <input type="time" class="form-control txtfield" id="time" name="time"
+        value="{{ request.form['time']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="notes">Notes</label>
+        <textarea type="text" class="form-control txtfield txtfield_long" style="height:150px;" id="notes" name="notes" placeholder="Enter notes"
+        >{{ request.form['notes'] }}</textarea>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn-red">Submit</button>
+    </div>
+{% endblock %}

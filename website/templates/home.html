@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+<br/>
+<br/>
+<br/>
+<br/>
+{% if user.is_authenticated and user.user_type !='admin' %}
+<a href="/events"><button class="btn-red">Upcoming Event</button></a>
+&nbsp;&nbsp;
+<a href="/registered-events"><button class="btn-red">Upcoming Registered Event</button></a>
+&nbsp;&nbsp;
+<a href="/create-consultation-staff"><button class="btn-red">Create Consultation with staff</button></a>
+&nbsp;&nbsp;
+<a href="/create-consultation"><button class="btn-red">Register for Consultation</button></a>
+{% endif %}
+{% if user.is_authenticated and user.user_type =='ctlstaff' %}
+<a href="/ctl-dashboard"><button class="btn-red">CTL Dashboard</button></a>
+&nbsp;&nbsp;
+<a href="/generate-reports"><button class="btn-red">View Reports</button></a>
+&nbsp;&nbsp;
+<button onclick="requestForAdmin('admin');" class="btn-red">Request to be an admin</button>
+{% elif user.is_authenticated and user.user_type =='faculty' %}
+<a href="/faculty-dashboard"><button class="btn-red">Faculty Dashboard</button></a>
+&nbsp;&nbsp;
+<br/><br/>
+<button onclick="requestForAdmin('ctlstaff')" class="btn-red">Request to be ctl staff</button>
+{% endif %}
+
+{% if user.is_authenticated and user.user_type =='admin' %}
+<a href="/admin-request"><button class="btn-red">Admin Requests</button></a>
+{% endif %}
+{% endblock %}

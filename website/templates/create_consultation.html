@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block title %}Create Consultation{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 class="title_txt" align="center">Create Consultation</h3>
+    <div class="form-group p-3">
+        <label for="event type">Specific Consultation</label>
+        <select class="form-control txtfield txtfield_long" id="ctl_id" name="ctl_id">
+            <option style="color:gray;" value="" disabled selected>Select CTL Staff</option>
+            {% for ctl in ctl_staff %}
+                <option value="{{ctl.id}}">{{ctl.first_name}} {{ctl.last_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group p-3">
+        <label for="mode">Mode of Consultation</label>
+        <select class="form-control txtfield txtfield_long" id="mode" name="mode">
+            <option style="color:gray;" value="" disabled selected>Select mode</option>
+            <option value="Online">Online</option>
+            <option value="In-Person">In-Person</option>
+        </select>
+    </div>
+    <div class="form-group p-3">
+        <label style="font-size:17px">Available Days</label>
+        <div class="p-3 form-check-inline">
+                <div class="form-check form-check-inline">
+                    <input class="btn-check" type="checkbox" id="mon" name="available_days" value="Monday" >
+                    <label class="btn btn-custom" for="mon" data-mdb-button-init data-mdb-ripple-init>Monday</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="btn-check" type="checkbox" id="tue" name="available_days" value="Tuesday">
+                    <label class="btn btn-custom" for="tue">Tuesday</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="btn-check" type="checkbox" id="wed" name="available_days" value="Wednesday">
+                    <label class="btn btn-custom" for="wed">Wednesday</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="btn-check" type="checkbox" id="thurs" name="available_days" value="Thursday">
+                    <label  class="btn btn-custom"for="thurs">Thursday</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="btn-check" type="checkbox" id="fri" name="available_days" value="Friday">
+                    <label class="btn btn-custom" for="fri">Friday</label><br>
+                </div>
+        </div>
+
+    </div>
+    <div class="form-group p-3">
+        <label style="font-size:17px">Available Times:</label>
+        <div class="form-group p-3">
+            <label for="from_time">From</label>
+            <input type="time" class="form-control txtfield" id="from_time" name="from_time"
+            value="{{ request.form['from_time']}}"/>
+        </div>
+        <div class="form-group p-3">
+            <label for="to_time">To</label>
+            <input type="time" class="form-control txtfield" id="to_time" name="to_time"
+            value="{{ request.form['to_time']}}"/>
+        </div>
+    </div>
+
+    <div class="form-group p-3">
+        <label for="reason">Reason</label>
+        <textarea type="text" class="form-control txtfield txtfield_long" style="height:150px;" id="reason" name="reason" placeholder="Enter reason"
+        >{{ request.form['reason'] }}</textarea>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn-red">Submit</button>
+    </div>
+{% endblock %}

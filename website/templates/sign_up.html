@@ -1,0 +1,93 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 class="title_txt" align="center">Sign up</h3>
+
+    <div class="row p-3">
+        <div class="form-group col-auto">
+            <label for="first name">First Name</label>
+            <input type="text" class="form-control txtfield" id="fname" name="fname" placeholder="Enter your first name"
+            value="{{ request.form['fname']}}"/>
+        </div>
+        <div class="form-group col-auto">
+            <label for="last name">Last Name</label>
+            <input type="text" class="form-control txtfield" id="lname" name="lname" placeholder="Enter your last name"
+            value="{{ request.form['lname']}}"/>
+        </div>
+    </div>
+    <div class="row align-items-center p-3">
+        <div class="form-group col-auto">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control txtfield" id="email" name="email" placeholder="Enter your email"
+            value="{{ request.form['email']}}"/>
+        </div>
+        <div class="form-group col-auto">
+            <label for="confirm_email">Confirm Email Address</label>
+            <input type="email" class="form-control txtfield" id="confirm_email" name="confirm_email" placeholder="Confirm email"
+            value="{{ request.form['confirm_email']}}"/>
+        </div>
+    </div>
+    <div class="form-group p-3">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control txtfield txtfield_long" id="phone_number" name="phone_number"
+        placeholder="Enter exact 10 digit number as phone number"
+        value="{{ request.form['phone_number']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="college">College</label>
+        <select class="form-control txtfield txtfield_long" id="college" name="college">
+            <option style="color:gray;" value="" disabled selected>Select College</option>
+            <option value="College of Arts and Sciences">College of Arts and Sciences</option>
+            <option value="College of Business Administration">College of Business Administration</option>
+            <option value="College of Education">College of Education</option>
+            <option value="College of Nursing">College of Nursing</option>
+            <option value="College of Optometry">College of Optometry</option>
+            <option value="Graduate School">Graduate School</option>
+            <option value="Pierre Laclede Honors College">Pierre Laclede Honors College</option>
+            <option value="UMSL/Washington University Joint Undergraduate Engineering Program">UMSL/Washington University Joint Undergraduate Engineering Program</option>
+            <option value="School of Social Work">School of Social Work</option>
+        </select>
+    </div>
+    <div class="form-group p-3">
+        <label for="department">Department</label>
+        <input type="text" class="form-control txtfield txtfield_long" id="department" name="department" placeholder="Enter your department"
+        value="{{ request.form['department']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="title">Title</label>
+        <input type="text" class="form-control txtfield txtfield_long" id="title" name="title" placeholder="Enter your title"
+        value="{{ request.form['title']}}"/>
+    </div>
+    <div class="form-group p-3">
+        <label for="faculty_appointment">Faculty Appointment</label>
+        <select class="form-control txtfield txtfield_long" id="faculty_appointment" name="faculty_appointment"
+        value="{{ request.form['faculty_appointment']}}">
+            <option style="color:gray;" value="" disabled selected>Select Faculty Appointment</option>
+            <option value="Full_Time">Full Time</option>
+            <option value="Part_Time">Part Time</option>
+            <option value="Retired">Retired</option>
+        </select>
+    </div>
+    <br />
+
+    <div class="form-group p-3">
+        <label for="first name">Username</label>
+        <input type="text" class="form-control txtfield" id="username" name="username" placeholder="Enter username"
+        value="{{ request.form['username']}}"/>
+    </div>
+    <div class="row p-3">
+        <div class="form-group col-auto">
+            <label for="password1">Password</label>
+            <input type="password" class="form-control txtfield" id="password1" name="password1" placeholder="Enter new Password"
+            value="{{ request.form['password1']}}"/>
+        </div>
+        <div class="form-group col-auto">
+            <label for="password2">Confirm Password</label>
+            <input type="password" class="form-control txtfield" id="password2" name="password2" placeholder="Confirm new Password"/>
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-red">Submit</button>
+</form>
+{% endblock %}

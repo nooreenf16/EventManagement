@@ -1,0 +1,142 @@
+{% extends "base.html" %} {% block title %}Faculty Dashboard{% endblock %}
+
+{% block content %}
+    <h3 class="title_txt" align="center">Faculty User Dashboard</h3>
+    <br/>
+    <div align="center">
+        <h4>Upcoming Registered Events</h4>
+        <br/>
+        {% set url = 'https://fastly.picsum.photos/id/6/5000/3333.jpg?hmac=pq9FRpg2xkAQ7J9JTrBtyFcp9-qvlu8ycAi7bUHlL7I' %}
+        
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner reg_inner" id="up_inner">
+                {% if reg_events | length == 0 %}
+                    <div class="carousel-item active text-muted">
+                        <div class="card">
+                            <img src="https://placehold.co/560x420?text=Register\nNow!" class="d-block strip_img" alt="No image">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted">No Events</h5>
+                                <p class="card-text">Events appear here after registration</p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    {% for re in reg_events %}
+                        <div class="carousel-item active reg_item" id="up_item">
+                            <div class="card">
+                                <img src="{{url}}" class="d-block strip_img" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{re.title}}</h5>
+                                    <p class="card-text">{{re.start_date}} <br/> {{re.location}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="carousel-item active reg_item" id="up_item">
+                        <div class="card" style="height:413px;">
+                            <img src="../static/list.webp" class="d-block strip_img" alt="...">
+                            <div class="card-body">
+                                <a href="/registered-events"><button class="btn-red">View All</button></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <button class="carousel-control-prev reg_prev_btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next reg_next_btn" id="next-reg" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+            
+
+    <br/><br/>
+    <div style="border-bottom:1px solid black;"></div>
+    <br/><br/>
+
+    <div align="center">
+        <h4>Upcoming Events</h4>
+        <a href="/events"><button class="btn-red">View All Events List</button></a>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner up_inner">
+                {% if events | length == 0 %}
+                    <div class="carousel-item active text-muted">
+                        <div class="card">
+                            <img src="https://placehold.co/560x420?text=Register\nNow!" class="d-block strip_img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">No Events yet</h5>
+                                <p class="card-text">Upcoming Events appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    {% for event in events %}
+                        <div class="carousel-item active up_item">
+                            <div class="card">
+                                <img src="{{url}}" class="d-block strip_img" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{event.title}}</h5>
+                                    <p class="card-text">{{event.start_date}} <br/> {{event.location}}</p>
+                                    <button id="register{{event.id}}" value={{event.id}} class="btn-red" onclick="registerForEvent(value, 'faculty-dashboard');">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <button class="carousel-control-prev up_prev_btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                    <button class="carousel-control-next up_next_btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                {% endif %}
+        </div>
+    </div>
+
+    <br/><br/>
+    <div style="border-bottom:1px solid black;"></div>
+    <br/><br/>
+
+    <div align="center">
+        <h4>Upcoming Consultations</h4>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner cons_inner">
+                {% if consultations | length == 0 %}
+                    <div class="carousel-item active text-muted">
+                        <div class="card">
+                            <img src="https://placehold.co/560x420?text=Register\nNow!" class="d-block strip_img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted">No Consultations</h5>
+                                <p class="card-text">Consultations appear here after registration</p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    {% for c in consultations %}
+                        <div class="carousel-item active cons_item">
+                            <div class="card">
+                                <img src="{{url}}" class="d-block strip_img" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{c.type}}</h5>
+                                    <p class="card-text">{{c.date}} <br/> {{c.nature}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <button class="carousel-control-prev cons_prev_btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next cons_next_btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

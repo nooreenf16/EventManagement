@@ -1,0 +1,12 @@
+
+{% block content %}
+<p>Hello {{user.first_name}},</p>
+
+<p>This is to confirm your registration for the following event:</p>
+
+<p>Event Title: {{event.title}}</p>
+<p>Event Type: {{event.type}}</p>
+<p>Event Location: {{event.location}}</p>
+<p>Event Start Date: {{event.start_date}}</p>
+<p>Event End Date: {{event.end_date}}</p>
+{% endblock %}
